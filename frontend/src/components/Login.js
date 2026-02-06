@@ -102,28 +102,42 @@ function Login(props) {
 
     return (
       <>
-        <Column lg={6} md={0} sm={0} />
-        <Column lg={4} md={8} sm={4}>
-          <picture>
-            <img
-              src={logoSrc}
-              alt="fullsize logo"
-              width="300"
-              height="56"
-              style={{ objectFit: "contain" }}
-              onError={(e) => {
-                // Fallback to default logo if custom logo fails to load
-                e.target.src = `images/openelis_logo_full.png`;
-              }}
-            />
-          </picture>
+        <Column lg={6} md={2} sm={0} />
+        <Column lg={4} md={4} sm={4}>
+          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+            <picture>
+              <img
+                src={logoSrc}
+                alt="fullsize logo"
+                style={{
+                  objectFit: "contain",
+                  maxWidth: "100%",
+                  height: "auto",
+                  maxHeight: "80px",
+                  display: "block",
+                  margin: "0 auto"
+                }}
+                onError={(e) => {
+                  // Fallback to default logo if custom logo fails to load
+                  e.target.src = `images/openelis_logo_full.png`;
+                }}
+              />
+            </picture>
+          </div>
         </Column>
-        <Column lg={6} md={0} sm={0} />
-        <Column lg={6} md={0} sm={0} />
-        <Column lg={4} md={8} sm={4}>
-          <FormattedMessage id="login.notice.message" />
+        <Column lg={6} md={2} sm={0} />
+        <Column lg={6} md={2} sm={0} />
+        <Column lg={4} md={4} sm={4}>
+          <div style={{
+            textAlign: "left",
+            fontSize: "0.875rem",
+            lineHeight: "1.5",
+            marginBottom: "1rem"
+          }}>
+            <FormattedMessage id="login.notice.message" />
+          </div>
         </Column>
-        <Column lg={6} md={0} sm={0} />
+        <Column lg={6} md={2} sm={0} />
       </>
     );
   };
@@ -217,8 +231,12 @@ function Login(props) {
             <br />
             <br />
           </Column>
-          <Column lg={6} md={0} sm={0} />
-          <Column lg={4} md={8} sm={4}>
+          <Column
+            sm={{ span: 4, offset: 0 }}
+            md={{ span: 4, offset: 2 }}
+            lg={{ span: 4, offset: 6 }}
+          >
+
             <Section>
               {samlRedirectInitiated ? (
                 <Stack gap={5}>
@@ -327,7 +345,7 @@ function Login(props) {
                         )}
                         {configurationProperties?.useSaml == "true" &&
                           configurationProperties?.useSamlLoginPage !==
-                            "false" && (
+                          "false" && (
                             <Button
                               type="button"
                               renderIcon={HardwareSecurityModule}
@@ -350,7 +368,7 @@ function Login(props) {
               )}
             </Section>
           </Column>
-          <Column lg={6} md={0} sm={0} />
+          <Column lg={6} md={2} sm={0} />
           <Column lg={0} md={0} sm={0}>
             {loginMessage()}
           </Column>
