@@ -533,3 +533,11 @@ button {
     width: 14rem;
   }
 }
+
+/* Breadcrumb flexbox styles - Override Carbon Design System */
+.cds--breadcrumb {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
